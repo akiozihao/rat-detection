@@ -19,7 +19,8 @@ class TrainAugmentation:
             ToPercentCoords(),
             Resize(self.size),
             SubtractMeans(self.mean),
-            lambda img, boxes=None, labels=None: (img / std, boxes, labels),
+            # lambda img, boxes=None, labels=None: (img / std, boxes, labels),
+            DevideStd(std),
             ToTensor(),
         ])
 
@@ -40,7 +41,7 @@ class TestTransform:
             ToPercentCoords(),
             Resize(size),
             SubtractMeans(mean),
-            lambda img, boxes=None, labels=None: (img / std, boxes, labels),
+            DevideStd(std),
             ToTensor(),
         ])
 
